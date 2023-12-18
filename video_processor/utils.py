@@ -45,6 +45,7 @@ def process_video(video_id):
                 content = content.strip()
                 store_subtitle_in_dynamodb(video_id, start_time, content, end_time)
 
+    video.is_active = True
     video.save()
     return "Processing completed successfully"
 
