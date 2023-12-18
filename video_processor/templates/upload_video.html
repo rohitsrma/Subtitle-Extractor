@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Upload Video</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    <div class="uploaded-videos">
+        <h3>Uploaded Videos</h3>
+        <ul>
+            {% for video in uploaded_videos %}
+                <li>
+                    {{ video.title }}
+                    <a href="{% url 'search_videos' video_id=video.uuid %}" target="_blank" class="btn btn-primary mt-2">Search in Video</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

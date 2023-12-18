@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results for {{ title }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Search Results for: <b>{{ title }}</b></h2>
+        <form method="get">
+            <div class="form-group">
+                <label for="searchKeyword">Enter Keyword</label>
+                <input type="text" id="searchKeyword" name="keyword" value="{{ keyword }}">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if keyword %}
+            {% if results %}
+                <h3 class="search-results">Search Results</h3>
+                <ul>
+                    {% for result in results %}
+                        <li>
+                            <span>TimeLine <span class="badge success-badge">{{ result.start_time }} {{ result.end_time }} seconds</span>:</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
