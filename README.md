@@ -12,5 +12,3 @@ Subtitle Extractor is a web application designed for quick video search and proc
 ## Demo
 
 https://youtu.be/ehqyGRDr5k4
-
-## Thanks
